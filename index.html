@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>معالم السور — عرض لمعالم سور القرآن الكريم</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23a67c52'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%23f2e7d5' font-family='serif'>م</text></svg>">
+<style>
+  :root{
+    --cream:#f2e7d5;
+    --cream2:#f8f1e4;
+    --brown:#a67c52;
+    --brown-d:#7d5a36;
+    --brown-l:#c8a882;
+    --gray:#a5a5a5;
+    --ink:#43382a;
+    --ink-2:#6e5d48;
+    --paper:#fbf7ef;
+    --shadow:0 10px 30px rgba(122,94,64,.15);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; font-family:'Amiri', 'Traditional Arabic', serif;
+    background:var(--cream); color:var(--ink);
+    font-size:18px; line-height:1.9;
+    -webkit-text-size-adjust:100%;
+  }
+  a{color:var(--brown-d)}
+
+  /* ===== Header ===== */
+  header{
+    background:linear-gradient(180deg,var(--brown-d),var(--brown));
+    color:var(--cream2); position:sticky; top:0; z-index:50;
+    box-shadow:0 2px 14px rgba(0,0,0,.22);
+  }
+  .hwrap{max-width:1200px;margin:auto;padding:10px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .kufi{font-weight:700;font-size:26px;letter-spacing:.5px;display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none}
+  .kufi .mark{
+    width:44px;height:44px;border-radius:12px;background:var(--cream2);color:var(--brown-d);
+    display:grid;place-items:center;font-size:24px;box-shadow:inset 0 0 0 2px rgba(125,90,54,.35)
+  }
+  nav{display:flex;gap:8px;flex-wrap:wrap;margin-inline-start:auto}
+  nav button{
+    font-family:inherit;font-size:16px;color:var(--cream2);background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:7px 18px;cursor:pointer;
+    transition:.18s
+  }
+  nav button:hover{background:rgba(255,255,255,.25)}
+  nav button.active{background:var(--cream2);color:var(--brown-d);border-color:var(--cream2);font-weight:700}
+
+  footer{
+    text-align:center;color:var(--ink-2);padding:26px 12px 38px;font-size:15px;
+  }
+  footer b{color:var(--brown-d)}
+
+  main{max-width:1200px;margin:auto;padding:26px 18px 50px}
+
+  /* ===== Home ===== */
+  .hero{
+    display:grid;grid-template-columns:280px 1fr;gap:30px;align-items:start;
+    background:var(--paper);border:1px solid #e6d9c2;border-radius:22px;padding:26px;box-shadow:var(--shadow)
+  }
+  .hero .cover{
+    border-radius:14px;overflow:hidden;box-shadow:0 14px 34px rgba(0,0,0,.28);cursor:pointer;
+    border:6px solid #fff;background:#fff;transition:.2s
+  }
+  .hero .cover:hover{transform:translateY(-4px)}
+  .hero .cover img{width:100%;display:block}
+  .b-title{font-size:40px;font-weight:700;color:var(--brown-d);margin:0 0 2px}
+  .b-sub{font-size:20px;color:var(--ink-2);margin-bottom:18px}
+  .badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+  .badge{background:var(--cream);border:1px solid #e0d2ba;color:var(--ink-2);border-radius:999px;padding:4px 14px;font-size:15px}
+  .btns{display:flex;flex-wrap:wrap;gap:10px}
+  .btn{
+    font-family:inherit;font-size:17px;border:none;border-radius:12px;padding:12px 24px;cursor:pointer;
+    background:var(--brown);color:#fff;box-shadow:0 6px 16px rgba(166,124,82,.35);transition:.18s
+  }
+  .btn:hover{background:var(--brown-d);transform:translateY(-2px)}
+  .btn.ghost{background:transparent;color:var(--brown-d);box-shadow:none;border:1.5px solid var(--brown);font-weight:700}
+  .btn.ghost:hover{background:var(--cream)}
+  .sec-title{font-size:26px;font-weight:700;color:var(--brown-d);margin:40px 0 14px;position:relative;padding-inline-start:14px}
+  .sec-title::before{content:"";position:absolute;inset-inline-start:0;top:8px;bottom:8px;width:5px;border-radius:4px;background:var(--brown)}
+
+  .sections-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+  .sec-card{
+    background:var(--paper);border:1px solid #e6d9c2;border-radius:14px;padding:14px 16px;cursor:pointer;
+    display:flex;justify-content:space-between;align-items:center;transition:.18s
+  }
+  .sec-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+  .sec-card .pg{color:var(--gray);font-size:14px}
+
+  .note{background:#fff8ea;border:1px dashed var(--brown-l);border-radius:14px;padding:14px 18px;color:var(--ink-2);font-size:16px;margin-top:26px}
+
+  /* ===== Surah index ===== */
+  .search-wrap{display:flex;gap:10px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
+  .search-wrap input{
+    flex:1;min-width:260px;font-family:inherit;font-size:18px;padding:11px 18px;border:1.5px solid var(--brown-l);
+    border-radius:12px;background:var(--paper);color:var(--ink);outline:none
+  }
+  .search-wrap input:focus{border-color:var(--brown)}
+  .count{color:var(--gray);font-size:15px}
+
+  .sura-item{
+    background:var(--paper);border:1px solid #e6d9c2;border-radius:16px;margin-bottom:12px;padding:16px 18px;
+    transition:.18s
+  }
+  .sura-item:hover{box-shadow:var(--shadow)}
+  .sura-item.is-start{border-inline-start:6px solid var(--brown)}
+  .s-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .s-num{
+    min-width:44px;height:44px;border-radius:50%;background:var(--brown);color:#fff;
+    display:grid;place-items:center;font-weight:700;font-size:17px;box-shadow:0 4px 10px rgba(166,124,82,.4)
+  }
+  .s-name{font-size:24px;font-weight:700;color:var(--brown-d)}
+  .s-pages{color:var(--gray);font-size:15px}
+  .s-maqasid{margin-top:6px;color:var(--ink-2);font-size:17px;line-height:2}
+  .s-maqasid b{color:var(--ink)}
+  .s-go{
+    margin-inline-start:auto;font-family:inherit;font-size:15px;border:1.5px solid var(--brown);color:var(--brown-d);
+    background:transparent;border-radius:999px;padding:7px 16px;cursor:pointer;transition:.18s
+  }
+  .s-go:hover{background:var(--cream)}
+
+  /* ===== Reader ===== */
+  .reader{background:var(--paper);border:1px solid #e6d9c2;border-radius:20px;padding:18px;box-shadow:var(--shadow)}
+  .r-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+  .nav-btn{
+    width:46px;height:46px;border-radius:50%;border:none;background:var(--brown);color:#fff;font-size:20px;
+    cursor:pointer;transition:.15s;display:grid;place-items:center
+  }
+  .nav-btn:hover{background:var(--brown-d)}
+  .nav-btn:disabled{background:var(--gray);cursor:default}
+  .pg-jump{display:flex;align-items:center;gap:6px}
+  .pg-jump input{
+    width:78px;font-family:inherit;font-size:17px;text-align:center;border:1.5px solid var(--brown-l);border-radius:10px;
+    padding:9px 4px;background:#fff;color:var(--ink)
+  }
+  select{
+    font-family:inherit;font-size:16px;padding:9px 10px;border:1.5px solid var(--brown-l);border-radius:10px;
+    background:#fff;color:var(--ink);max-width:230px
+  }
+  .r-info{margin-inline-start:auto;text-align:start}
+  .r-info .where{font-weight:700;color:var(--brown-d);font-size:17px}
+  .r-info .printed{color:var(--gray);font-size:14px}
+  .r-slider{width:100%;accent-color:var(--brown);margin:2px 0 6px}
+  #stage{
+    display:flex;justify-content:center;align-items:flex-start
+  }
+  #pageImg{
+    max-width:100%;height:auto;border-radius:8px;box-shadow:0 16px 44px rgba(0,0,0,.25);background:#fff
+  }
+  .stage-actions{display:flex;justify-content:center;gap:12px;margin-top:12px;flex-wrap:wrap}
+  .thumbs-strip{
+    margin-top:20px;background:var(--cream2);border:1px solid #e6d9c2;border-radius:16px;padding:12px;
+    overflow:hidden
+  }
+  .thumbs-strip h4{margin:0 0 8px;color:var(--brown-d);font-size:17px}
+  .thumbs-inner{overflow-x:auto;display:flex;gap:8px;padding-bottom:6px}
+  .thumb{flex:0 0 auto;width:104px;border-radius:8px;border:2px solid transparent;cursor:pointer;transition:.15s;background:#fff;padding:0}
+  .thumb img{width:100%;display:block;border-radius:6px}
+  .thumb:hover{border-color:var(--brown-l)}
+  .thumb.cur{border-color:var(--brown);box-shadow:0 4px 12px rgba(166,124,82,.45)}
+  .kbd-hint{color:var(--gray);font-size:14px;margin-top:10px;text-align:center}
+
+  /* ===== Manhaj / About ===== */
+  .sheets{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+  .sheet{background:var(--paper);border:1px solid #e6d9c2;border-radius:16px;overflow:hidden;cursor:pointer;transition:.2s}
+  .sheet:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+  .sheet img{width:100%;display:block}
+  .sheet .cap{text-align:center;font-size:16px;color:var(--ink-2);padding:8px 0 12px}
+  .about-grid{display:grid;grid-template-columns:240px 1fr;gap:26px;background:var(--paper);border:1px solid #e6d9c2;border-radius:20px;padding:24px;box-shadow:var(--shadow)}
+  .about-grid .cover{border-radius:12px;overflow:hidden;border:5px solid #fff;box-shadow:0 10px 26px rgba(0,0,0,.22)}
+  .about-grid .cover img{width:100%;display:block}
+  table.meta{border-collapse:collapse;width:100%;font-size:17px}
+  table.meta td{padding:9px 8px;border-bottom:1px dashed #ded0b8}
+  table.meta td:first-child{color:var(--gray);width:150px}
+  table.meta td:last-child{color:var(--ink)}
+
+  /* ===== Responsive ===== */
+  html,body{max-width:100%;overflow-x:clip}
+  img{max-width:100%}
+
+  @media (max-width:840px){
+    .hero{grid-template-columns:1fr}
+    .hero .cover{max-width:280px;margin:auto}
+    body{font-size:17px}
+    .b-title{font-size:32px}
+    .about-grid{grid-template-columns:1fr}
+    .about-grid .cover{max-width:220px;margin:auto}
+    .r-info{margin-inline-start:0;width:100%}
+    .s-go{margin-inline-start:0;width:100%}
+    main{padding:20px 14px 40px}
+  }
+
+  /* شاشات الجوال */
+  @media (max-width:600px){
+    header{position:static}
+    .hwrap{padding:8px 12px;gap:10px}
+    .kufi{font-size:20px}
+    .kufi .mark{width:34px;height:34px;border-radius:10px;font-size:19px}
+    nav{
+      width:100%;flex-wrap:nowrap;overflow-x:auto;gap:6px;
+      margin-inline-start:0;padding-bottom:2px;scrollbar-width:none;
+      -webkit-overflow-scrolling:touch
+    }
+    nav::-webkit-scrollbar{display:none}
+    nav button{flex:0 0 auto;white-space:nowrap;font-size:15px;padding:7px 14px}
+
+    main{padding:14px 10px 30px}
+    .hero{padding:18px 14px;border-radius:16px;gap:18px}
+    .b-title{font-size:27px}
+    .b-sub{font-size:17px}
+    .badge{font-size:13.5px;padding:3px 11px}
+    .btn{font-size:16px;padding:12px 20px}
+    .btns .btn{flex:1 1 46%}
+    .sec-title{font-size:22px;margin:30px 0 12px}
+
+    .search-wrap input{font-size:17px;padding:10px 14px}
+    .sura-item{padding:14px;border-radius:12px}
+    .s-top{gap:8px}
+    .s-name{font-size:20px}
+    .s-maqasid{font-size:16px}
+
+    .reader{padding:10px;border-radius:14px}
+    .r-bar{gap:8px}
+    .nav-btn{width:44px;height:44px}
+    select{max-width:100%;flex:1 1 100%;width:100%}
+    #pageImg{border-radius:4px;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+    .stage-actions .btn{flex:1 1 auto}
+    .thumbs-strip{padding:8px;margin-top:14px}
+    .thumb{width:84px}
+    .kbd-hint{display:none} /* لا مفاتيح على الجوال — التنقل بالسحب والأزرار */
+
+    .sheets{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+    .sheet .cap{font-size:14px}
+    .about-grid{padding:16px}
+    table.meta{font-size:16px}
+  }
+
+  @media (max-width:360px){
+    .b-title{font-size:24px}
+    .s-name{font-size:19px}
+    .thumb{width:76px}
+  }
+
+  @media (hover:none){
+    .btn,.sec-card,.sheet,.thumb,.sura-item{transform:none!important}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hwrap">
+    <div class="kufi" onclick="go('#/')">
+      <span class="mark">م</span>
+      <span>معالم السور</span>
+    </div>
+    <nav id="mainNav">
+      <button data-r="home"  onclick="go('#/')">الرئيسية</button>
+      <button data-r="index" onclick="go('#/index')">فهرس السور والمقاصد</button>
+      <button data-r="read"  onclick="go('#/read/1')">تصفّح الكتاب</button>
+      <button data-r="manhaj" onclick="go('#/manhaj')">منهجية معالم السور</button>
+      <button data-r="about" onclick="go('#/about')">عن الكتاب</button>
+    </nav>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer>
+  <div>«<b>معالم السور</b>» — عرض لمعالم سور القرآن الكريم باستدلال ومنهج • تأليف <b>فايز السريح</b></div>
+  <div>الناشر: المؤلف • الدمام ١٤٣٩هـ • ٤٩٦ صفحة • المقاصد منقولة من فهرس الكتاب نفسه</div>
+  <div style="margin-top:6px;font-size:14px">للتواصل والاستفسار: maalem.swar@gmail.com (المذكور في الكتاب ص ٤٨٨)</div>
+</footer>
+
+<script src="book_data.js"></script>
+<script>
+/* ================= Utility ================= */
+const app = document.getElementById("app");
+const $  = (s, el=document) => el.querySelector(s);
+const AR = n => String(n).replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);
+const LAST_KEY = "maalem-swar:lastPage";
+const saveLast = n => { try { localStorage.setItem(LAST_KEY, String(n)); } catch(e){} };
+const loadLast = () => { try { return localStorage.getItem(LAST_KEY); } catch(e){ return null; } };
+
+const suraFor = page => {
+  for (let i = SURAS.length - 1; i >= 0; i--) if (SURAS[i].start <= page) return SURAS[i];
+  return null;
+};
+const printedFor = page => { const s = suraFor(page); return s ? s.printed : null; };
+
+function go(hash){ location.hash = hash; }
+
+/* ================= Views ================= */
+
+/* ---- Home ---- */
+function viewHome(){
+  const last = loadLast();
+  app.innerHTML = `
+    <section class="hero">
+      <div class="cover" onclick="go('#/read/1')" title="تصفّح الكتاب">
+        <img src="pages/1.jpg" alt="غلاف كتاب معالم السور">
+      </div>
+      <div>
+        <div class="b-sub">عرض لمعالم سور القرآن الكريم باستدلال ومنهج</div>
+        <h1 class="b-title">معالم السور</h1>
+        <div class="badges">
+          <span class="badge">تأليف: فايز السريح</span>
+          <span class="badge">الدمام ١٤٣٩هـ</span>
+          <span class="badge">٤٩٦ صفحة</span>
+          <span class="badge">١١٤ سورة بمقاصدها</span>
+        </div>
+        <div class="btns">
+          <button class="btn" onclick="go('#/read/1')">اقرأ من الغلاف</button>
+          <button class="btn ghost" onclick="go('#/index')">فهرس السور والمقاصد</button>
+          ${last ? `<button class="btn ghost" onclick="go('#/read/${last}')">متابعة القراءة من الصفحة ${AR(last)}›</button>` : ""}
+          <button class="btn ghost" onclick="go('#/manhaj')">منهجية معالم السور</button>
+          <button class="btn ghost" onclick="go('#/about')">عن الكتاب</button>
+        </div>
+      </div>
+    </section>
+
+    <h2 class="sec-title">عناوين الكتاب في ملف PDF</h2>
+    <div class="sections-grid">
+      ${SECTIONS.map(s => `
+        <div class="sec-card" onclick="go('#/read/${s.page}')">
+          <span>${s.label}</span><span class="pg">ص ${AR(s.page)}</span>
+        </div>`).join("")}
+    </div>
+
+    <div class="note">
+      جميع صفحات الكتاب هنا هي صور مطابقة تمامًا للمطبوع، والفهرس أعلاه (السور والمقاصد والصفحات) منقول عن فهرس الكتاب نفسه.
+    </div>
+  `;
+}
+
+/* ---- Surah index ---- */
+function viewIndex(){
+  app.innerHTML = `
+    <h2 class="sec-title">فهرس السور والمقاصد</h2>
+    <div class="search-wrap">
+      <input id="sSearch" type="search" placeholder="ابحث باسم السورة أو في نص المقصد…" autocomplete="off">
+      <span class="count" id="sCount"></span>
+    </div>
+    <div id="sList"></div>
+  `;
+  const list = $("#sList"), count = $("#sCount");
+  const render = () => {
+    const q = $("#sSearch").value.trim();
+    const items = SURAS.filter(s => !q || s.name.includes(q) || s.maqasid.includes(q));
+    count.textContent = q ? `${AR(items.length)} نتيجة` : `${AR(items.length)} سورة`;
+    list.innerHTML = items.map(s => `
+      <div class="sura-item ${pageInside(s.start)?'is-start':''}">
+        <div class="s-top">
+          <span class="s-num">${AR(s.n)}</span>
+          <span class="s-name">${s.name}</span>
+          <span class="s-pages">ص ${AR(s.printed)} من فهرس الكتاب</span>
+          <button class="s-go" onclick="go('#/read/${s.start}')">بدايتها: صفحة ${AR(s.start)} ›</button>
+        </div>
+        <div class="s-maqasid"><b>المقصد الرئيسي:</b> ${s.maqasid}</div>
+      </div>
+    `).join("");
+  };
+  window.pageInside = n => {
+    const p = +n;
+    const s = suraFor(p);
+    return s && p - s.start < 8;
+  };
+  $("#sSearch").addEventListener("input", render);
+  render();
+}
+
+/* ---- Manhaj pages ---- */
+function viewManhaj(){
+  const pages = [9,10,11,12];
+  app.innerHTML = `
+    <h2 class="sec-title">منهجية معالم السور</h2>
+    <p style="color:var(--ink-2)">صفحات المنهجية (٥–٨ بالطباعة) كما وردت في الكتاب؛ انقر أي صفحة لتكبرها في القارئ.</p>
+    <div class="sheets">
+      ${pages.map(p => `
+        <div class="sheet" onclick="go('#/read/${p}')">
+          <img src="pages/${p}.jpg" alt="صفحة ${p} من كتاب معالم السور">
+          <div class="cap">صفحة ${AR(p)}</div>
+        </div>`).join("")}
+    </div>
+  `;
+}
+
+/* ---- About ---- */
+function viewAbout(){
+  app.innerHTML = `
+    <h2 class="sec-title">عن الكتاب</h2>
+    <div class="about-grid">
+      <div class="cover"><img src="pages/1.jpg" alt="غلاف الكتاب"></div>
+      <div>
+        <h1 class="b-title" style="font-size:30px">معالم السور</h1>
+        <div class="b-sub" style="font-size:18px">عرض لمعالم سور القرآن الكريم باستدلال ومنهج</div>
+        <table class="meta">
+          <tr><td>المؤلف</td><td>فايز السريح</td></tr>
+          <tr><td>الناشر</td><td>المؤلف</td></tr>
+          <tr><td>مكان وسنة الإصدار</td><td>الدمام ١٤٣٩هـ</td></tr>
+          <tr><td>عدد الصفحات</td><td>٤٩٦ صفحة</td></tr>
+          <tr><td>أقسام الكتاب</td><td>السبع الطوال، المئون، المثاني، المفصّل</td></tr>
+          <tr><td>تواصل المؤلف</td><td><a href="mailto:maalem.swar@gmail.com">maalem.swar@gmail.com</a> (مذكور في الكتاب ص ٤٨٨)</td></tr>
+        </table>
+        <div class="btns" style="margin-top:18px">
+          <button class="btn" onclick="go('#/read/1')">اقرأ الكتاب</button>
+          <button class="btn ghost" onclick="go('#/index')">فهرس السور والمقاصد</button>
+        </div>
+        <div class="note" style="margin-top:16px">
+          يمدّ الكتاب سور القرآن الكريم تفصيلًا مقسمًا إلى أربعة أقسام: <b>السبع الطوال</b>، <b>المئون</b>، <b>المثاني</b>، ثم <b>المفصّل</b>، مع فاصلة تعريفية قبل كل قسم تحدد المنهج الذي يُدرس به.
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+/* ---- Reader ---- */
+function viewRead(startPage){
+  const p = Math.min(Math.max(1, +startPage || 1), BOOK.total);
+  if (+startPage !== p) { location.hash = "#/read/" + p; return; }
+  app.innerHTML = `
+    <div class="reader">
+      <div class="r-bar">
+        <button class="nav-btn" id="pgPrev" title="الصفحة السابقة">›</button>
+        <div class="pg-jump">
+          <span>الصفحة</span>
+          <input id="pgInput" type="number" min="1" max="${BOOK.total}">
+          <span>من ${AR(BOOK.total)}</span>
+        </div>
+        <button class="nav-btn" id="pgNext" title="الصفحة التالية">‹</button>
+        <select id="suraJump">
+          <option value="">الانتقال إلى سورة…</option>
+          ${SURAS.map(s => `<option value="${s.start}">${AR(s.n)}. ${s.name} — ص ${AR(s.start)}</option>`).join("")}
+        </select>
+        <div class="r-info">
+          <div class="where" id="whereInfo"></div>
+          <div class="printed" id="printedInfo"></div>
+        </div>
+      </div>
+      <input type="range" class="r-slider" id="pgRange" min="1" max="${BOOK.total}">
+      <div id="stage"><img id="pageImg" src="pages/${p}.jpg" alt="صفحة ${AR(p)} من كتاب معالم السور"></div>
+      <div class="stage-actions">
+        <button class="btn ghost" id="pgPrev2">الصفحة السابقة</button>
+        <button class="btn ghost" id="pgNext2">الصفحة التالية</button>
+      </div>
+      <div class="thumbs-strip">
+        <h4>صفحات الكتاب</h4>
+        <div class="thumbs-inner" id="thumbs"></div>
+      </div>
+      <div class="kbd-hint">استخدم مفاتيح الأسهم ← للصفحة التالية و→ للسابقة • على الجوال اسحب الصورة بإصبعك يمينًا أو يسارًا لتقليب الصفحات • موضع القراءة يُحفظ تلقائياً</div>
+    </div>
+  `;
+
+  const img = $("#pageImg"), input = $("#pgInput"), range = $("#pgRange");
+
+  $("#thumbs").innerHTML = Array.from({length: BOOK.total}, (_, i) => `
+    <button class="thumb" data-p="${i+1}" title="صفحة ${AR(i+1)}"><img loading="lazy" src="thumbs/${i+1}.jpg" alt=""></button>
+  `).join("");
+  const thumbs = [...app.querySelectorAll(".thumb")];
+
+  const sync = () => {
+    const cur = state.page;
+    input.value = cur;
+    range.value = cur;
+    img.src = "pages/" + cur + ".jpg";
+    img.alt = "صفحة " + AR(cur) + " من كتاب معالم السور";
+    const s = suraFor(cur);
+    $("#whereInfo").textContent = s ? `${s.name} — السورة ${AR(s.n)}` : "أبواب تمهيدية وفاصلة الفهرس";
+    const pr = printedFor(cur);
+    $("#printedInfo").textContent = pr ? `الصفحة ${AR(pr)} في فهرس الكتاب` : "";
+    thumbs.forEach(t => t.classList.toggle("cur", +t.dataset.p === cur));
+    const curThumb = thumbs[cur-1];
+    if (curThumb) curThumb.scrollIntoView({block:"nearest", inline:"nearest"});
+    $("#pgPrev").disabled = $("#pgPrev2").disabled = cur === 1;
+    $("#pgNext").disabled = $("#pgNext2").disabled = cur === BOOK.total;
+    saveLast(cur);
+  };
+  const setPage = n => { state.page = Math.min(Math.max(1, +n), BOOK.total); sync(); };
+
+  state.page = p;
+  state.go = setPage;
+  $("#pgPrev").onclick = $("#pgPrev2").onclick = () => setPage(state.page - 1);
+  $("#pgNext").onclick = $("#pgNext2").onclick = () => setPage(state.page + 1);
+  input.onchange = () => setPage(input.value);
+  range.oninput = () => setPage(range.value);
+  $("#suraJump").onchange = e => { if (e.target.value) { go("#/read/" + e.target.value); e.target.value = ""; } };
+  thumbs.forEach(t => t.onclick = () => setPage(t.dataset.p));
+
+  /* السحب بالإصبع على الجوال: سحب لليسار = الصفحة التالية (كما مفاتيح الأسهم) */
+  const stage = $("#stage");
+  let tX = null, tY = null;
+  stage.addEventListener("touchstart", e => {
+    tX = e.touches[0].clientX; tY = e.touches[0].clientY;
+  }, {passive:true});
+  stage.addEventListener("touchend", e => {
+    if (tX === null) return;
+    const dx = e.changedTouches[0].clientX - tX;
+    const dy = e.changedTouches[0].clientY - tY;
+    if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+      if (dx < 0) setPage(state.page + 1); else setPage(state.page - 1);
+    }
+    tX = tY = null;
+  }, {passive:true});
+  stage.style.touchAction = "pan-y";
+  document.onkeydown = e => {
+    if (document.activeElement && ["INPUT", "SELECT"].includes(document.activeElement.tagName)) return;
+    if (e.key === "ArrowLeft")  { setPage(state.page + 1); e.preventDefault(); }
+    if (e.key === "ArrowRight") { setPage(state.page - 1); e.preventDefault(); }
+    if (e.key === "PageDown")   { setPage(state.page + 2); e.preventDefault(); }
+    if (e.key === "PageUp")     { setPage(state.page - 2); e.preventDefault(); }
+  };
+  sync();
+}
+
+/* ================= Router ================= */
+let state = { page: 1, go: null };
+
+function route(){
+  const h = location.hash || "#/";
+  const navMark = r =>
+    document.querySelectorAll("#mainNav button").forEach(b =>
+      b.classList.toggle("active", b.dataset.r === r));
+
+  if (state.go) document.onkeydown = null;
+  state.go = null;
+
+  const m = h.match(/^#\/read\/(\d+)$/);
+  if (m) { navMark("read"); viewRead(m[1]); }
+  else if (h.startsWith("#/index")) { navMark("index"); viewIndex(); }
+  else if (h.startsWith("#/manhaj")) { navMark("manhaj"); viewManhaj(); }
+  else if (h.startsWith("#/about"))  { navMark("about");  viewAbout(); }
+  else { navMark("home"); viewHome(); }
+  window.scrollTo({top:0});
+}
+window.addEventListener("hashchange", route);
+route();
+</script>
+</body>
+</html>
